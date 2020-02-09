@@ -9,9 +9,13 @@ router.get('/', function(req, res, next) {
       throw err;
     }
     else{
-      res.render('index', { title: 'Express', data:fields});
+      res.render('index', {data:fields});
     }
   });
 });
+
+router.get('/information', function(req, res, nex){
+  res.render('information');
+})
 
 module.exports = router;

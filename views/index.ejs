@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Conative's website</title>
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <%- include('include/header'); %>
 
+  <body>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-top:10px">
+      <strong>큰 화면</strong>에서는 깨져보일 수 있습니다..
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <img src="images/header.jpg" class="img-fluid" alt="Header">
+    <style>
+    </style>
     <%=data[0].content%>
   </body>
+  <%- include('include/footer'); %>
 </html>
