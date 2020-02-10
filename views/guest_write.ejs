@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>programming</title>
+</head>
+<%- include('include/header'); %>
+<body>
+    <section>
+        <div class="container">
+          <form class="was-validated">
+            <div class="row">
+              <div class="col">
+                <label for="validationServer01">제 목</label>
+                <input type="text" class="form-control is-valid" id="validationServer01" placeholder="제목을 입력하세요" required>
+              </div>
+              <div class="col">
+                <label for="validationServer01">I D</label>
+                <input class="form-control" type="text" placeholder="로그인을 하지 않았습니다" readonly>
+              </div>
+            </div><br>
+
+            <div class="mb-3">
+              <label for="validationTextarea">내 용</label>
+              <textarea class="form-control is-invalid" value="d" id="validationTextarea" placeholder="내용을 입력하세요" required></textarea>
+            </div>
+            
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
+              <label class="custom-control-label" for="customControlValidation1">I am not Robot</label>
+              <div class="invalid-feedback">Are you Robot?</div>
+            </div>
+
+            <div class="float-right">
+              <button type="button" class="btn btn-outline-primary">작성완료</button>
+              <button type="button" class="btn btn-outline-secondary" onclick="history.back()">작성취소</button>
+            </div>
+        </div>        
+    </section>
+    
+</body>
+</html>
