@@ -387,7 +387,7 @@ $.fn.simpleTree = function(options, data) {
                     _self.toggleSubtree(node)
             });
             div.append(node.domToggle);
-        }  
+        } 
         node.domLabel = $('<div/>').addClass(_options.css.label)
             .on('click', () => _nodeClicked(node));
         _renderNodeLabelText(node);
