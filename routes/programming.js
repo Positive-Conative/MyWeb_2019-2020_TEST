@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/c_language', function(req, res, next) {
-  res.render('programming_c');
+router.get('/Clang', function(req, res, next) {
+  res.render('./programming/programming_c');
 });
 
 module.exports = router;

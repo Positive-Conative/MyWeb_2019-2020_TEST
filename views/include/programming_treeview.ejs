@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/simpleTree.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="/javascripts/simpleTree.js"></script>
+</head>
+
+<body>
+    <div id="mytree"></div>
+</body>
+</html>
+<script>
+               
+  let data = [
+   {
+       label: 'Web',
+       value: 'web',
+       children: [
+           {
+               label: 'Front',
+               value: 'front',
+               children: [
+                    {
+                        label: 'Html',
+                        value: 'html'
+                    }, {
+                        label: 'CSS',
+                        value: 'css'
+                    }, {
+                        label: 'JavaScript',
+                        value: 'javascript',
+                    }
+                ]
+           },  {
+               label: 'Back',
+               value: 'bront',
+               children: [
+                    {
+                        label: 'Nodejs',
+                        value: 'nodejs'
+                    }, {
+                        label: 'Expressjs',
+                        value: 'expressjs'
+                    }
+                ]
+           }
+       ]
+   }, {
+       label: 'Base',
+       value: 'base',
+       children: [
+           {
+               label: 'C Language',
+               value: 'Clang'
+           }, {
+               label: 'Java',
+               value: 'java'
+           }
+       ]
+   }
+];
+
+var options = {
+        // Optionally provide here the jQuery element that you use as the search box for filtering the tree. simpleTree then takes control over the provided box, handling user input
+        searchBox: $('#example'),
+
+        // Search starts after at least 3 characters are entered in the search box
+        searchMinInputLength: 2,
+
+        // Number of pixels to indent each additional nesting level
+        indentSize: 25,
+
+        // Show child count badges?
+        childCountShow: true,
+
+        // Symbols for expanded and collapsed nodes that have child nodes
+        symbols: {
+            collapsed: '▶',
+            expanded: '▼'
+        },
+
+        // these are the CSS class names used on various occasions. If you change these names, you also need to provide the corresponding CSS class
+        css: {
+            childrenContainer: 'simpleTree-childrenContainer',
+            childCountBadge: 'simpleTree-childCountBadge badge badge-pill badge-secondary',
+            highlight: 'simpleTree-highlight',
+            indent: 'simpleTree-indent',
+            label: 'simpleTree-label',
+            mainContainer: 'simpleTree-mainContainer',
+            nodeContainer: 'simpleTree-nodeContainer',
+            selected: 'simpleTree-selected',
+            toggle: 'simpleTree-toggle'
+        }
+    };
+$('#mytree').simpleTree(options, data);
+</script>
