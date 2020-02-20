@@ -1,3 +1,9 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<img src="/images/404err.png">
+<br>
+
+<input type="button" value="check err msg" onclick="document.getElementById('errmsg').style.display='block'">
+<div id="errmsg" style="display:none">
+    <h1><%= message %></h1>
+    <h2><%= error.status %></h2>
+    <pre><%= error.stack %></pre>
+</div>

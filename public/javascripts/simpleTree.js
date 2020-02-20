@@ -322,8 +322,10 @@ $.fn.simpleTree = function(options, data) {
             _self.clearSelection(true);
         }
         else{
-            location.href=node.value;
-            console.log(node.value)
+            if(node.children==""){
+                location.href=node.value;
+            }
+            //console.log(node.children)
             _self.setSelectedNode(node);
         }
     }

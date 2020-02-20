@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>programming</title>
+</head>
+<%- include('../include/header'); %>
+<body>
+  <section> 
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <%- include('../include/programming_treeview'); %>
+            </ul>
+          </div>
+        </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Welcome to Programming world!</h1>            
+          </div>
+            공부한 목록 소개
+            <div id="tree_data"></div>
+        </main>
+      </div>
+    </div>
+  </section> 
+  <span class="badge badge-secondary">New</span>   
+</body>
+</html>
+
+<script>
+  //tree data계산 후 가져오기
+  var temp='';
+  for(var i=0; i<data.length; i++){
+    temp+="<br>"+(i+1)+" : "+ data[i].label +" → ";
+    for(var j=0; j<data[i].children.length; j++){
+      temp+= data[i].children[j].label;
+      for(var k=0; k<data[i].children[j].children.length; k++){
+        temp+="("+data[i].children[j].children[k].label+")"
+      }
+      temp+=" / ";
+    }
+  }
+  $(tree_data).html(temp);
+</script>
