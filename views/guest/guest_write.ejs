@@ -2,27 +2,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>programming</title>
+    <title>Guest Book Write page</title>
 </head>
-<%- include('include/header'); %>
+<%- include('../include/header'); %>
 <body>
     <section>
         <div class="container">
-          <form class="was-validated">
+          <form class="was-validated" action="/guest/write" method="POST">
             <div class="row">
               <div class="col">
                 <label for="validationServer01">제 목</label>
-                <input type="text" class="form-control is-valid" id="validationServer01" placeholder="제목을 입력하세요" required>
+                <input name="title" type="text" class="form-control is-valid" id="validationServer01" placeholder="제목을 입력하세요" required>
               </div>
               <div class="col">
+                <label for="validationServer01">작 성 자</label>
+                <input name="name" type="text" class="form-control is-valid" id="validationServer01" placeholder="이름을 입력하세요" required>
+              </div>
+              <!-- <div class="col">
                 <label for="validationServer01">I D</label>
                 <input class="form-control" type="text" placeholder="로그인을 하지 않았습니다" readonly>
-              </div>
+              </div> -->
             </div><br>
 
             <div class="mb-3">
               <label for="validationTextarea">내 용</label>
-              <textarea class="form-control is-invalid" value="d" id="validationTextarea" placeholder="내용을 입력하세요" required></textarea>
+              <textarea name="content" class="form-control is-invalid" value="d" id="validationTextarea" placeholder="내용을 입력하세요" required></textarea>
             </div>
             
             <div class="custom-control custom-checkbox mb-3">
@@ -32,10 +36,10 @@
             </div>
 
             <div class="float-right">
-              <button type="button" class="btn btn-outline-primary">작성완료</button>
+              <button type="submit" class="btn btn-outline-primary">작성완료</button>
               <button type="button" class="btn btn-outline-secondary" onclick="history.back()">작성취소</button>
             </div>
-        </div>        
+        </div>
     </section>
     
 </body>

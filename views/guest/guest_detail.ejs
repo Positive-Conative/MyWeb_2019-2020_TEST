@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Guest Book Detail page</title>
+</head>
+<%- include('../include/header'); %>
+<body>
+    <section>
+        <div class="container">
+          <form class="was-validated" action="/guest/write" method="POST">
+            <div class="row">
+                <div class="col">
+                    <label for="validationServer01">제 목</label>
+                    <input class="form-control" type="text" placeholder="<%=guest_data.title%>" readonly>
+                </div>
+                <div class="col">
+                    <label for="validationServer01">작 성 자</label>
+                    <input class="form-control" type="text" placeholder="<%=guest_data.name%>" readonly>
+                </div>
+                <div class="col">
+                    <label for="validationServer01">작 성 일 자</label>
+                    <input class="form-control" type="text" placeholder="<%=moment(guest_data.date).format('YYYY-MM-DD / hh:mm:ss')%>" readonly>
+                </div>
+            </div>
+            <br>
+            <div class="mb-3">
+                <label for="validationServer01">내 용</label>
+                <input class="form-control" type="text" placeholder="<%=guest_data.content%>" readonly>
+            </div>
+            <div class="float-right">
+              <button type="button" class="btn btn-outline-secondary" onclick="history.back()">뒤로가기</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

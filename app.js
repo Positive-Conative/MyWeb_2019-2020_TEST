@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var programmingRouter = require('./routes/programming');
@@ -27,6 +28,12 @@ app.use('/programming', programmingRouter);
 app.use('/guest', guestRouter);
 app.use('/login', loginRouter);
 app.use('/test', testRouter);
+
+//mongoose
+mongoose.Promise = global.Promise;
+const connStr = 'mongodb://conative:kyj123@cluster0-shard-00-00-kapxb.mongodb.net:27017,cluster0-shard-00-01-kapxb.mongodb.net:27017,cluster0-shard-00-02-kapxb.mongodb.net:27017/first?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority';
+mongoose.connect(connStr, {useNewUrlParser: true});
+mongoose.connection.on('error', console.error);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
