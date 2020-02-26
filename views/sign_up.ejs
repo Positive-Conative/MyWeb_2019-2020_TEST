@@ -6,20 +6,43 @@
 </head>
 <%- include('include/header'); %>
 <body>
- <!-- <form class="form-signin">
-        <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
+  <section>
+    <div class="container">
+      <form action="/login" method="POST">
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationDefaultUsername">ID (Email 형식)</label>
+            <div class="input-group">
+              <input name='email_id' type="text" class="form-control" id="input_email" placeholder="사용하실 Email을 입력해주세요" required>
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend2">@</span>
+              </div>
+              <select name='email_adr' class="custom-select" id="email_adr" onChange="email_option(this.options[this.selectedIndex].value)" required>
+                <option selected disabled value="">선택하세요</option>
+                <option>naver.com</option>
+                <option>gmail.com</option>
+                <option>직접 입력</option>
+              </select>
+              <input name='input_self'style="display:none" type="text" class="form-control" id="input_self" value = " " required>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="input_email">패스워드</label>
+            <input name='password' type="password" id="inputPassword" class="form-control" placeholder="패스워드 입력" required>
+          </div>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017-2019</p>
-      </form> -->
+        <button type="submit" class="btn btn-info">회원가입</button>
+      </form>
+    </div>
+  </section>
 </body>
 </html>
+
+<script>
+  function email_option(value){
+    if(value == "직접 입력"){
+      $("#input_self").css('display','inline-block')
+      $("#email_adr").css('display','none')
+    }
+  }  
+</script>
