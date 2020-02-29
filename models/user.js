@@ -4,6 +4,8 @@ var mongoose = require('mongoose'),
 var schema = new Schema({
     email: {type: String, trim: true},
     password: {type: String, trim: true},
+    name: {type: String, trim: true},
+    num: {type: String, trim: true},
     date: {type: Date, default: Date.now},
     },{
         toJSON: { virtuals: true},

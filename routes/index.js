@@ -13,19 +13,53 @@ router.get('/information', function(req, res, nex){
 router.get('/login', function(req, res, next) {
   res.render('sign_up');
 });
+
+
+const nodemailer = require('nodemailer');
 router.post('/login', function(req, res, next) {
 
-  if(req.body.input_self == 'NULL'){
-    console.log("hello")
+  if(req.body.email_adr == '직접 입력'){
+    var email = req.body.email_id + "@" + req.body.input_self;
   }else{
-    console.log("world")
+    var email = req.body.email_id + "@" + req.body.email_adr;
   }
 
-  console.log(req.body.email_id);
-  console.log(req.body.email_adr);
-  console.log(req.body.input_self);
-  console.log(req.body.password);
+  console.log("id : " + email);
+  console.log("password : " + req.body.password);
+  console.log("name : " + req.body.name);
+  console.log("num : " + req.body.num);
+  
+  //nodemailer모듈 사용
+
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'conative.test@gmail.com',  // gmail ID
+      pass: 'CONATIVE.TEST'          // gmail Password
+    }
+  });
+
+  let mailOptions = {
+    from: 'youremail@gmail.com',    // send (gmail ID)
+    to: email ,                     // Receive (gmail ID)
+    subject: '안녕하세요, Conative의 Web Site 회원가입 요청 메세지입니다.',   // 제목
+    text: '아래 링크를 클릭하여 회원가입을 마쳐주세요. <a> </a>'  // 내용
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    }
+    else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
 });
+
+//회원가입 인증 메일을 발송 후 확인하는 페이지
+router.get('/login_finish', function(req, res, nex){
+  res.render('login_finish');
+})
 
 router.post('/login', function(req, res, nex){
   console.log(req.body.email);

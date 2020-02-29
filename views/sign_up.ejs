@@ -13,7 +13,7 @@
           <div class="col-md-6 mb-3">
             <label for="validationDefaultUsername">ID (Email 형식)</label>
             <div class="input-group">
-              <input name='email_id' type="text" class="form-control" id="input_email" placeholder="사용하실 Email을 입력해주세요" required>
+              <input name='email_id' type="text" class="form-control" id="input_email" placeholder="ex) hello" required>
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroupPrepend2">@</span>
               </div>
@@ -23,15 +23,24 @@
                 <option>gmail.com</option>
                 <option>직접 입력</option>
               </select>
-              <input name='input_self'style="display:none" type="text" class="form-control" id="input_self" value = " " required>
+              <input name='input_self'style="display:none" type="text" class="form-control" id="input_self" 
+                value = " " placeholder="ex) world.com" required>
             </div>
           </div>
           <div class="col-md-6 mb-3">
-            <label for="input_email">패스워드</label>
-            <input name='password' type="password" id="inputPassword" class="form-control" placeholder="패스워드 입력" required>
+            <label for="input_password">패스워드</label>
+            <input name='password' type="password" id="inputpassword" class="form-control" placeholder="ex) example123" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="input_name">이름(실명)</label>
+            <input name='name' type="text" id="inputname" class="form-control" placeholder="ex) 홍길동" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="input_num">휴대폰번호('-' 없이 입력)</label>
+            <input name='num' type="text" id="inputnum" class="form-control" placeholder="ex) 01012345678" required>
           </div>
         </div>
-        <button type="submit" class="btn btn-info">회원가입</button>
+        <button type="submit" class="btn btn-info float-right">작성완료</button>
       </form>
     </div>
   </section>
@@ -41,6 +50,7 @@
 <script>
   function email_option(value){
     if(value == "직접 입력"){
+      $("#input_self").val('')
       $("#input_self").css('display','inline-block')
       $("#email_adr").css('display','none')
     }
