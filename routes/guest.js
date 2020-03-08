@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/page/:num', function(req, res, next) {
-  Guest.paginate({}, { page: req.params.num, limit: PAGE_MAX }, function(err, guest_data) {
+  Guest.paginate({}, { page: req.params.num, limit: PAGE_MAX, sort: { date: -1 }}, function(err, guest_data) {  //Date기준으로 Sort, -1일경우 desc / 1일경우 asc / sort: { year: -1 , month:-1}는 둘다 해당됨
     if (err) {
       return next(err);
     }
@@ -38,10 +38,21 @@ router.get('/write', function(req, res, next) {
 });
 
 router.post('/write', function(req, res, next) {
+  //오늘 날짜 계산 Date객체 사용
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1;
+  var yyyy = today.getFullYear();
+  let hours = today.getHours();
+  let minutes = today.getMinutes();
+  let seconds = today.getSeconds();
+  today = yyyy+'/'+mm+'/'+dd+' '+hours+':'+minutes+':'+seconds;
+
   var write_data = new Guest({
     title : req.body.title,
     name : req.body.name,
-    content : req.body.content
+    content : req.body.content,
+    date : today
   });
   // console.log(Test.findById(write_data._id));
   write_data.save();

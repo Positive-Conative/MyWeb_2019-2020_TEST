@@ -22,9 +22,15 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <!-- 게시글 내용 정렬해서 내리기 -->
                   <% guest_data.docs.forEach(function(data, index){%>
                     <tr style="cursor: pointer" onclick="location.href='/guest/detail?id=<%=data.id%>'" >
-                      <th scope="row"><%= (page_num-1) * PAGE_MAX + index + 1 %></th>
+                      <th scope="row"><%= (page_num-1) * PAGE_MAX + index + 1 %>
+                        <!-- 날짜 계산 -->
+                        <%if(moment.duration(moment().diff(moment(data.date))).asMinutes()<10){%>
+                          <span class="badge badge-secondary">New</span>
+                        <%}%>
+                      </th>
                       <td><%= data.title %></td>
                       <td><%= data.name %></td>
                       <td><%= moment(data.date).format('YYYY-MM-DD / hh:mm:ss') %></td>
@@ -33,6 +39,7 @@
                 </tbody>
             </table>
             <br>
+            <!-- 쪽수 표시 -->
             <nav aria-label="Page navigation">
               <ul class="pagination justify-content-center">
                 <%if(page_num!=1){%>

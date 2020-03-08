@@ -3,10 +3,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var schema = new Schema({
+    year: {type: String, trim: true},
+    month: {type: String, trim: true},
     title: {type: String, trim: true},
-    name: {type: String, trim: true},
-    content: {type: String, trim: true},
-    date: {type: Date, trim: true}, 
+    content: {type: String, trim: true}
     },{
         toJSON: { virtuals: true},
         toObject: {virtuals: true}
@@ -14,4 +14,4 @@ var schema = new Schema({
 );
 
 schema.plugin(mongoosePaginate); //mongoose-paginate를 쓸 때 사용..?
-module.exports = mongoose.model('guest', schema);
+module.exports = mongoose.model('information', schema);

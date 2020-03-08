@@ -1,4 +1,5 @@
 var express = require('express');
+var moment = require('moment');
 var router = express.Router();
 
 /* GET home page. */
@@ -6,15 +7,34 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.get('/information', function(req, res, nex){
-  res.render('information');
+//information 관련
+const Information = require('../models/information');
+router.get('/information', function(req, res, next){
+  var PAGE_MAX = 5; //최대 표시 갯수 설정
+  Information.paginate({}, {limit: PAGE_MAX,sort: { year: 1, month:1 }}, function(err, information_data) { 
+    if (err) {
+      return next(err);
+    }
+    res.render('information', {information_data : information_data, PAGE_MAX : PAGE_MAX, moment});
+  });
+})
+
+router.post('/information', function(req, res, next){
+  var write_data = new Information({
+    year : req.body.input_year,
+    month : req.body.input_month,
+    title : req.body.input_title,
+    content : req.body.input_content
+  });
+  write_data.save();
+  res.redirect('/information');
 })
 
 router.get('/login', function(req, res, next) {
   res.render('sign_up');
 });
 
-
+//login 관련
 const nodemailer = require('nodemailer');
 router.post('/login', function(req, res, next) {
 
@@ -57,11 +77,11 @@ router.post('/login', function(req, res, next) {
 });
 
 //회원가입 인증 메일을 발송 후 확인하는 페이지
-router.get('/login_finish', function(req, res, nex){
+router.get('/login_finish', function(req, res, next){
   res.render('login_finish');
 })
 
-router.post('/login', function(req, res, nex){
+router.post('/login', function(req, res, next){
   console.log(req.body.email);
   console.log(req.body.password);
 })
