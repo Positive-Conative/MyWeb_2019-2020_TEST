@@ -323,7 +323,7 @@ $.fn.simpleTree = function(options, data) {
         }
         else{
             if(node.children==""){
-                location.href=node.value;
+                location.href=node.value+'?page=1';
             }
             //console.log(node.children)
             _self.setSelectedNode(node);
